@@ -76,5 +76,6 @@ void MostrarLista(TipoLista &lista){
 }
 
 int GenerarAleatoreo(){
+    //prueba
     
 }
