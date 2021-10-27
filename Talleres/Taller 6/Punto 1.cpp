@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
+#include <iostream>
+using namespace std;
 struct nodo{
    int valor;// Valor que va tener la estructura en cada uno en este caso es un numero entero
    struct nodo *siguiente; //Apuntador hacia el siguiente nodo o enlace
@@ -9,7 +11,7 @@ struct nodo{
 typedef struct nodo *TipoLista; //Definicion del nombre de la lista
 //declaracion de funciones que posee la listas
 void Insertar(TipoLista &l, int v); 
-void Valor(TipoLista &l, int v);
+void Buscar(TipoLista &l, int v);
 
 //*****************************
 
@@ -17,19 +19,17 @@ int main(){
    TipoLista lista = NULL;//nicio de listas en Nulo
    int op,x;
    do{
-    printf("***MENU***\n\n");
-    system("cls");
-    printf("\t1. Llenar la lista.");
-    printf("\n\t2. Buscar valor en la lista.");
-    printf("\n\t3. Salir.");
-    printf("\n\tIngrese la opcion: ");
-    
-    scanf("%d",&op);
-   
-    switch(op){
+      printf("***MENU***\n\n");
+      system("cls");
+      printf("\t1. Llenar la lista.");
+      printf("\n\t2. Buscar valor en la lista.");
+      printf("\n\t3. Salir.");
+      printf("\n\tIngrese la opcion: ");
+      scanf("%d",&op);
+      switch(op){
          case 1:
             do {  //SE CREAUNA LISTA HASTA QUE EL USUARIO PRECIONE 0
-                system("cls");
+               system("cls");
                printf("Digite  Cero (0) para salir\n");
                printf("Digite el dato que desea agregar:");
                scanf("%d",&x);
@@ -43,7 +43,7 @@ int main(){
          case 2:
             printf("Digite el valor a buscar: ");
             scanf("%d",&x);
-            Valor(lista,x);
+            Buscar(lista,x);
             getch();
             break;
       
@@ -51,11 +51,7 @@ int main(){
             printf("Saliendo del aplicativo");
             getch();
             break;
-      
-        
       }
-   
-   
    } while(op!=3);
 
 
@@ -65,11 +61,11 @@ int main(){
 
 
 //Buscar valor
-void Valor(TipoLista &lista, int Valor1){
+void Buscar(TipoLista &lista, int Dato){
 	TipoLista q =lista;
 	int i = 0;
-	while(lista){
-		if(q->valor ==Valor1){
+	while(q != NULL){
+		if(q->valor ==Dato){
 			i++;
 		}
 		q=q->siguiente;
